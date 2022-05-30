@@ -169,9 +169,13 @@ namespace NSwag.CodeGeneration
                     {
                         operationName = operationName.Substring(0, operationName.Length - "Async".Length);
                     }
+                    var controllerName = BaseSettings.OperationNameGenerator.GetClientName(document, path, httpMethod, operation);
+
+                    operationName = CSharpIdentifierValidator.RemoveInvalidIdentifierCharacters(operationName);
+                    controllerName = CSharpIdentifierValidator.RemoveInvalidIdentifierCharacters(controllerName);
 
                     var operationModel = CreateOperationModel(operation, BaseSettings);
-                    operationModel.ControllerName = BaseSettings.OperationNameGenerator.GetClientName(document, path, httpMethod, operation);
+                    operationModel.ControllerName = controllerName;
                     operationModel.Path = path;
                     operationModel.HttpMethod = httpMethod;
                     operationModel.OperationName = operationName;
