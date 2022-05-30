@@ -119,7 +119,7 @@ namespace NSwag.CodeGeneration.Tests
 
             // Assert
             Assert.Contains("public partial class Client", code);
-            Assert.Contains("Task<Person> PersonactionfooAsync()", code);
+            Assert.Contains("Task<Person> PersonActionFooAsync()", code);
         }
 
         private static OpenApiDocument CreateDocument()
